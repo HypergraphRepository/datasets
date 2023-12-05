@@ -17,6 +17,7 @@ You will like those projects!
 ##### h5 Heading
 ###### h6 Heading
 # h1 heading
+## h2 heading
 
 ## Horizontal Rules
 
