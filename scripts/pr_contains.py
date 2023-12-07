@@ -1,6 +1,9 @@
 import os 
 import requests
 
+name = 'template'
+value = ""
+
 try:
     PR_NUMBER = os.environ["PR_NUMBER"]
 except KeyError:
@@ -20,6 +23,9 @@ res = response.json()
 
 if len(res) > 0:
     for file in res:
-        print(file["filename"])
+        value = value + file['filename'] + "\n"
 else:
     print("Response is empty!")
+
+with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+    print(f'{name}={value}', file=fh)

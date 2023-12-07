@@ -11,6 +11,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      template: ${{ steps.step1.outputs.template }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -22,6 +24,16 @@ jobs:
       - run: pip install -r ./scripts/requirements.txt
 
       - name: Run PR Contains
+        id: step1
         run: |
-          
           python -u ./scripts/pr_contains.py
+
+  job1:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: echoResult
+        run: |
+          echo ${{needs.build.outputs.template}} 
+
+# OUTPUT1:
