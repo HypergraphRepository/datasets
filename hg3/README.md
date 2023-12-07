@@ -1,3 +1,3 @@
 # info 1
 
-test for pr6
+test for pr7
