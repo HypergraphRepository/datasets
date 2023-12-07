@@ -15,10 +15,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.8
+          cache: 'pip'
+      - run: pip install -r ./scripts/requirements.txt
 
       - name: Run PR Contains
         run: |
+          
           python -u ./scripts/pr_contains.py
