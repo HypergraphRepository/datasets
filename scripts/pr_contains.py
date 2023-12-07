@@ -12,6 +12,10 @@ def set_multiline_output(name, value):
 name = 'template'
 value = f'### INFO on your PR\n'
 
+commentid = uuid.uuid1()
+with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+    print(f'commentid={commentid}', file=fh)
+
 try:
     PR_NUMBER = os.environ["PR_NUMBER"]
 except KeyError:

@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       template: ${{ steps.step1.outputs.template }}
+      commentid: ${{ steps.step1.outputs.commentid }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -36,6 +37,7 @@ jobs:
     steps:
       - uses: mshick/add-pr-comment@v2
         with:
+          message-id: ${{needs.build.outputs.commentid}}
           message: |
             ${{needs.build.outputs.template}} 
 
