@@ -10,7 +10,7 @@ def set_multiline_output(name, value):
         print(delimiter, file=fh)
 
 name = 'template'
-value = "### INFO on your PR" + uuid.uuid1()
+value = f'### INFO on your PR {uuid.uuid1()}'
 
 try:
     PR_NUMBER = os.environ["PR_NUMBER"]
