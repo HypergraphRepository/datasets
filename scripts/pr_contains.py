@@ -28,6 +28,6 @@ else:
     print("Response is empty!")
 
 value = value + "EOF"
-
+print(value)
 with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
     print(f'{name}={value}', file=fh)
