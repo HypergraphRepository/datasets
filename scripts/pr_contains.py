@@ -1,5 +1,13 @@
 import os 
 import requests
+import uuid
+
+def set_multiline_output(name, value):
+    with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+        delimiter = uuid.uuid1()
+        print(f'{name}<<{delimiter}', file=fh)
+        print(value, file=fh)
+        print(delimiter, file=fh)
 
 name = 'template'
 value = ""
@@ -27,4 +35,4 @@ if len(res) > 0:
 else:
     print("Response is empty!")
 
-print(f"::set-output name={name}::{value}")
+set_multiline_output("template", value)
