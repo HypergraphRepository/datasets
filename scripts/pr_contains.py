@@ -2,7 +2,7 @@ import os
 import requests
 
 name = 'template'
-value = ""
+value = "<<EOF"
 
 try:
     PR_NUMBER = os.environ["PR_NUMBER"]
@@ -26,6 +26,8 @@ if len(res) > 0:
         value = value + file['filename'] + "\n"
 else:
     print("Response is empty!")
+
+value = value + "EOF"
 
 with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
     print(f'{name}={value}', file=fh)
