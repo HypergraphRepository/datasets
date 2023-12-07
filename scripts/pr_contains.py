@@ -2,7 +2,7 @@ import os
 import requests
 
 name = 'template'
-value = "<<EOF\n"
+value = ""
 
 try:
     PR_NUMBER = os.environ["PR_NUMBER"]
@@ -27,7 +27,4 @@ if len(res) > 0:
 else:
     print("Response is empty!")
 
-value = value + "EOF"
-print(value)
-with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
-    print(f'{name}={value}', file=fh)
+print(f"::set-output name={name}::{value}")
