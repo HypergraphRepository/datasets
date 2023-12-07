@@ -1,0 +1,21 @@
+name: PR Contains
+
+on:
+  pull_request:
+    branches: [main]
+
+env:
+  PR_NUMBER: ${{ github.event.number }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Run PR Contains
+        run: |
+          python -u ./scripts/pr_contains.py ${{ env.PR_NUMBER }}
