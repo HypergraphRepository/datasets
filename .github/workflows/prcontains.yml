@@ -31,9 +31,14 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      pull-requests: write
     steps:
-      - name: echoResult
-        run: |
-          echo ${{needs.build.outputs.template}} 
+      - uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            ${{needs.build.outputs.template}} 
+
+
 
 # OUTPUT1:
