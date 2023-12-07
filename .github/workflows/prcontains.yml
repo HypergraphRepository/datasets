@@ -20,4 +20,4 @@ jobs:
 
       - name: Run PR Contains
         run: |
-          python -u ./scripts/pr_contains.py ${{ env.PR_NUMBER }}
+          python -u ./scripts/pr_contains.py

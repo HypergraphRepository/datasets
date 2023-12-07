@@ -1,4 +1,8 @@
-import sys
+import os
 
-pr_number = sys.argv[1]
-print(f"PR number is {pr_number}")
+try:
+    PR_NUMBER = os.environ["PR_NUMBER"]
+except KeyError:
+    PR_NUMBER = "Token not available!"
+
+print(f"PR_NUMBER: {PR_NUMBER}")
