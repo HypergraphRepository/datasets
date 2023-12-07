@@ -2,7 +2,7 @@ import os
 import requests
 
 name = 'template'
-value = "<<EOF"
+value = "<<EOF\n"
 
 try:
     PR_NUMBER = os.environ["PR_NUMBER"]
