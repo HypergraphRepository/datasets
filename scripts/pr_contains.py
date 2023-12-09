@@ -67,9 +67,9 @@ if len(res) > 0:
 
     for file in res:
         if file['filename'].endswith(".md"):
-            value = value + file['filename'] + "\n"
+            value = value + "- [x] " + file['filename'] + "\n"
         elif file['filename'].endswith(".info"):
-            value = value + file['filename'] + "\n"
+            value = value + "- [x] " + file['filename'] + "\n"
         elif file['filename'].endswith(".hg"):
             # check format of hg file
             if hg_file_is_ok(file['raw_url']):
