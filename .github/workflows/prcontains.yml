@@ -41,6 +41,3 @@ jobs:
           message: |
             ${{needs.build.outputs.template}} 
 
-
-
-# OUTPUT1:

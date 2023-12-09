@@ -9,6 +9,24 @@ def set_multiline_output(name, value):
         print(value, file=fh)
         print(delimiter, file=fh)
 
+def hg_file_is_ok(rawApiCall):
+    rawResponse = requests.get(rawApiCall)
+    rawRes = rawResponse.text
+
+    # check that each line is numbers separated by commas
+    # e.g. 0,1
+    #      2,3
+    #      4,5,6
+    for line in rawRes.splitlines():
+        if line == "":
+            return False
+        for number in line.split(","):
+            if number == "":
+                continue
+            if not number.isdigit():
+                return False
+    return True
+
 name = 'template'
 value = f'### INFO on your PR\n'
 
@@ -34,9 +52,40 @@ response = requests.get(apiCall, headers=headers)
 res = response.json()
 
 if len(res) > 0:
+    mdFile = False
+    infoFile = False
+    hgFile = False
+
+    # check if all files are in the pull request
     for file in res:
-        value = value + file['filename'] + "\n"
+        if file['filename'].endswith(".md"):
+            mdFile = True
+        if file['filename'].endswith(".info"):
+            infoFile = True
+        if file['filename'].endswith(".hg"):
+            hgFile = True
+
+    for file in res:
+        if file['filename'].endswith(".md"):
+            value = value + file['filename'] + "\n"
+        elif file['filename'].endswith(".info"):
+            value = value + file['filename'] + "\n"
+        elif file['filename'].endswith(".hg"):
+            # check format of hg file
+            if hg_file_is_ok(file['raw_url']):
+                value = value + "- [x] " + file['filename'] + "\n"
+            else:
+                value = value + "- [ ] " + file['filename'] + " is not in correct format\n"
+        else:
+            value = value + "- [x] additional file not request!\n"
+
+    if not mdFile:
+        value = value + "- [ ] No markdown file found!\n"
+    if not infoFile:
+        value = value + "- [ ] No info file found!\n"
+    if not hgFile:
+        value = value + "- [ ] No hg file found!\n"
 else:
-    print("Response is empty!")
+    value = value + "Response is empty!"
 
 set_multiline_output("template", value)
