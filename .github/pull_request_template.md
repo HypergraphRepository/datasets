@@ -1,28 +1,20 @@
-THIS PROJECT IS IN MAINTENANCE MODE. We accept pull requests for Bug Fixes **ONLY**. NO NEW FEATURES ACCEPTED!
+## Info
+Pull Request Template
+
+This is a template to add a new dataset to the repository. Please fill out the following sections to help the reviewers.
+You can delete this section before submitting the pull request.
 
 ## Description
-<!--- Describe your changes in detail -->
 
-## Related Issue
-<!--- This project only accepts pull requests related to open issues -->
-<!--- If suggesting a new feature or change, please discuss it in an issue first -->
-<!--- If fixing a bug, there should be an issue describing it with steps to reproduce -->
-<!--- Please link to the issue here: -->
+Describe your dataset here. You can explain where it comes from, what it contains, and what it is used for.
+You can also add a link to the original source of the dataset or to a paper that uses it.
 
 ## Checklist before requesting a review
-- [ ] I have performed a self-review of my code
-- [ ] If it is a core feature, I have added thorough tests.
-- [ ] Do we need to implement analytics?
-- [ ] Will this be part of a product update? If yes, please write one phrase about this update.
 
-## Motivation and Context
-<!--- Why is this change required? What problem does it solve? -->
-<!--- If it fixes an open issue, please link to the issue here. -->
-
-## How Has This Been Tested?
-<!--- Please describe in detail how you tested your changes. -->
-<!--- Include details of your testing environment, and the tests you ran to -->
-<!--- see how your change affects other areas of the code, etc. -->
-
-## Screenshots (if appropriate):
-
+- [ ] I have added a folder with the name of the dataset
+- [ ] I have added the README.md file
+  - You can look at [Template](https://github.com/HyperCollect/datasets/blob/main/template/README.md) for an example
+- [ ] I have added tags of the dataset in the categories.info file
+  - The .info file supported for now is in the format of [Template](https://github.com/HyperCollect/datasets/blob/main/template/categories.info)
+- [ ] I have added the dataset as a namedataset.hg file
+  - The .hg file supported for now is in the format of [Template](https://github.com/HyperCollect/datasets/blob/main/template/template.hg)

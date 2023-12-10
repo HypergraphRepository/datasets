@@ -2,6 +2,18 @@
 
 WIP
 
+# Add your dataset here
+To add your dataset to this repository, you can follow the steps below:
+- Fork this repository
+- Add a **single** dataset to the repository with the following structure:
+```
+dataset_name
+├── README.md
+├── dataset_name.hg
+└── categories.info
+```
+- Open a pull request to this repository
+- Wait for the review and merge
 
 # Stats
 
