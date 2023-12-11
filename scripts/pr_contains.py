@@ -33,6 +33,7 @@ value = f'### INFO on your PR\n'
 commentid = uuid.uuid1()
 with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
     print(f'commentid={commentid}', file=fh)
+iserror = False
 
 try:
     PR_NUMBER = os.environ["PR_NUMBER"]
@@ -86,11 +87,12 @@ if len(res) > 0:
     if not hgFile:
         value = value + "- [ ] No hg file found!\n"
     if not mdFile or not infoFile or not hgFile:
-        set_multiline_output("template", value)
-        exit(1)
+        iserror = True        
 else:
     value = value + "Response is empty!"
-    set_multiline_output("template", value)
     exit(1)
 
 set_multiline_output("template", value)
+
+with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+    print(f'iserror={iserror}', file=fh)
