@@ -85,7 +85,12 @@ if len(res) > 0:
         value = value + "- [ ] No info file found!\n"
     if not hgFile:
         value = value + "- [ ] No hg file found!\n"
+    if not mdFile or not infoFile or not hgFile:
+        set_multiline_output("template", value)
+        exit(1)
 else:
     value = value + "Response is empty!"
+    set_multiline_output("template", value)
+    exit(1)
 
 set_multiline_output("template", value)

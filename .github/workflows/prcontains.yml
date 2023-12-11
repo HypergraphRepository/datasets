@@ -42,6 +42,7 @@ jobs:
             ${{needs.build.outputs.template}}
   
   add-reviewer:
+    needs: find-issues
     runs-on: ubuntu-latest
     steps:
       - uses: kentaro-m/auto-assign-action@v1.2.5
