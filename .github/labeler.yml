@@ -2,7 +2,7 @@
 hgcreation:
 - base-branch: 'main'
 - changed-files:
-  - all-globs-to-all-file: ['**/**/.md', '**/**/.hg', '**/**/.info']
+  - all-globs-to-all-files: ['**/**/.md', '**/**/.hg', '**/**/.info']
   - all-globs-to-all-files: '!scripts/*'
 
 info:
