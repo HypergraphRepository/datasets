@@ -1,0 +1,12 @@
+pull_request_rules:
+  - name: Automatically merge when GitHub Actions jobs succeed
+    conditions:
+       - check-success=build
+       - check-success=find-issues
+       - check-success=labelError
+       - check-success=add-reviewer
+       - check-success=label
+       - "#approved-reviews-by>=2"
+    actions:
+      merge:
+        method: merge
