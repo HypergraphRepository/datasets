@@ -51,11 +51,8 @@ jobs:
     steps:
       - uses: kentaro-m/auto-assign-action@v1.2.5
         
-  labeler:
+  labelError:
     needs: build
-    permissions:
-      contents: read
-      pull-requests: write
     runs-on: ubuntu-latest
     steps:
     - id: checkerror
@@ -70,7 +67,17 @@ jobs:
             repo: context.repo.repo,
             labels: ['error']
           })
+    - name: interrupt
+      if: ${{needs.build.outputs.iserror == 'true'}}
+      run: exit 1
 
+  label:
+    needs: labelError
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
     - id: labelPR
       uses: actions/labeler@v5
       with:
