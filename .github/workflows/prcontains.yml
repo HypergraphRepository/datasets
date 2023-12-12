@@ -52,19 +52,33 @@ jobs:
       - uses: kentaro-m/auto-assign-action@v1.2.5
         
   labeler:
+    needs: build
     permissions:
       contents: read
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-    - id: labeler
+    - id: checkerror
+      # if the build job fails, add the error label
+      if: ${{needs.build.outputs.iserror == 'true'}}
+      uses: actions/github-script@v7
+      with:
+        script: |
+          github.rest.issues.addLabels({
+            issue_number: ${{ env.PR_NUMBER }},
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            labels: ['error']
+          })
+
+    - id: labelPR
       uses: actions/labeler@v5
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         configuration-path: .github/labeler.yml
         dot: false
         sync-labels: true
-    - id: echo-labels
-      run: |
-        echo "${{ steps.labeler.outputs.all-labels }}"
-        echo "${{ steps.labeler.outputs.new-labels }}"
+    # - id: echo-labels
+    #   run: |
+    #     echo "${{ steps.labeler.outputs.all-labels }}"
+    #     echo "${{ steps.labeler.outputs.new-labels }}"

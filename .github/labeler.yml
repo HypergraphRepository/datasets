@@ -1,10 +1,11 @@
-# Add label hgcreation when a file with extension .hg, .info, .md is created inside a subfolder
+# Add label hgcreation when files with extension .hg, .info, .md are created inside a subfolder
 hgcreation:
 - base-branch: 'main'
 - changed-files:
   - all-globs-to-all-files: ['**/**/.md', '**/**/.hg', '**/**/.info']
   - all-globs-to-all-files: '!scripts/*'
 
+# Add label info when only readme.md on root folder is changed
 info:
 - changed-files:
   - all-globs-to-all-files: ['README.md', '!**/**/.md']
