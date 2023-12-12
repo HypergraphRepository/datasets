@@ -57,9 +57,14 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/labeler@v5
+    - id: labeler
+      uses: actions/labeler@v5
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         configuration-path: .github/labeler.yml
         dot: false
         sync-labels: true
+    - id: echo-labels
+      run: |
+        echo "{{ steps.labeler.outputs.all-labels }}"
+        echo "{{ steps.labeler.outputs.new-labels }}"
