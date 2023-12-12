@@ -2,12 +2,11 @@
 hgcreation:
 - base-branch: 'main'
 - changed-files:
-  - any-glob-to-any-file: '**/**/.md'
   - any-glob-to-any-file: '**/**/.hg'
   - any-glob-to-any-file: '**/**/.info'
   - all-globs-to-all-files: '!scripts/*'
 
-info:
+infoRepo:
 - base-branch: 'main'
 - changed-files:
-  - any-glob-to-any-file: README.md
+  - any-glob-to-any-file: 'README.md'

@@ -56,9 +56,6 @@ jobs:
       contents: read
       pull-requests: write
     runs-on: ubuntu-latest
-    outputs:
-      alllabels: ${{ steps.labeler.outputs.all-labels }}
-      newlabels: ${{  steps.labeler.outputs.new-labels }}
     steps:
     - id: labeler
       uses: actions/labeler@v5
@@ -71,5 +68,3 @@ jobs:
       run: |
         echo "${{ steps.labeler.outputs.all-labels }}"
         echo "${{ steps.labeler.outputs.new-labels }}"
-        echo "$alllabels"
-        echo "$newlabels"
