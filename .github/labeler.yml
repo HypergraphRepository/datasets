@@ -6,4 +6,5 @@ hgcreation:
   - all-globs-to-all-files: '!scripts/*'
 
 info:
-- README.md
+- changed-files:
+  - all-globs-to-all-files: ['README.md', '!**/**/.md']
