@@ -45,7 +45,7 @@ try:
 except KeyError:
     GITHUB_TOKEN = "GitHub Token not available!"
 
-apiCall = "https://api.github.com/repos/HyperCollect/datasets/pulls/" + str(PR_NUMBER) + "/files"
+apiCall = "https://api.github.com/repos/HypergraphRepository/datasets/pulls/" + str(PR_NUMBER) + "/files"
 
 headers = {'Authorization': 'token ' + GITHUB_TOKEN}
 
