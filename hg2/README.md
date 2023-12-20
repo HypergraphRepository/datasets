@@ -1,3 +1,0 @@
-# Info
-
-test 1
