@@ -16,5 +16,5 @@ You can also add a link to the original source of the dataset or to a paper that
   - You can look at [Template](https://github.com/HypergraphRepository/datasets/blob/main/template/README.md) for an example
 - [ ] I have added tags of the dataset in the categories.info file
   - The .info file supported for now is in the format of [Template](https://github.com/HypergraphRepository/datasets/blob/main/template/categories.info)
-- [ ] I have added the dataset as a namedataset.hg file
-  - The .hg file supported for now is in the format of [Template](https://github.com/HypergraphRepository/datasets/blob/main/template/template.hg)
+- [ ] I have added the dataset as a namedataset.hgf file
+  - The .hgf file supported for now is in the format of [Template](https://github.com/HypergraphRepository/datasets/blob/main/template/template.hgf)
