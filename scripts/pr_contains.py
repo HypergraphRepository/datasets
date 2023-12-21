@@ -27,6 +27,36 @@ def hg_file_is_ok(rawApiCall):
                 return False
     return True
 
+def hgf_file_is_ok(rawApiCall):
+    rawResponse = requests.get(rawApiCall)
+    rawRes = rawResponse.text
+    # check that file format is correct like:
+    # 16 4
+    # 1=true 2=true 3=true
+
+    firstLine = rawRes.splitlines()[0]
+    splitFirstLine = firstLine.split(" ")
+    if len(splitFirstLine) != 2:
+        return False
+    if not splitFirstLine[0].isdigit() or not splitFirstLine[1].isdigit():
+        return False
+
+    for line in rawRes.splitlines()[1:]:
+        if line == "":
+            continue
+        for element in line.split(" "):
+            if element == "":
+                continue
+            splitElement = element.split("=")
+            if len(splitElement) != 2:
+                return False
+            if not splitElement[0].isdigit():
+                return False
+            if splitElement[1] == "":
+                return False
+        
+    return True
+
 name = 'template'
 value = f'### INFO on your PR\n'
 
@@ -55,7 +85,7 @@ res = response.json()
 if len(res) > 0:
     mdFile = False
     infoFile = False
-    hgFile = False
+    hgfFile = False
 
     # check if all files are in the pull request
     for file in res:
@@ -63,7 +93,7 @@ if len(res) > 0:
             mdFile = True
         if file['filename'].endswith(".info"):
             infoFile = True
-        if file['filename'].endswith(".hg"):
+        if file['filename'].endswith(".hgf"):
             hgFile = True
 
     for file in res:
@@ -71,9 +101,9 @@ if len(res) > 0:
             value = value + "- [x] " + file['filename'] + "\n"
         elif file['filename'].endswith(".info"):
             value = value + "- [x] " + file['filename'] + "\n"
-        elif file['filename'].endswith(".hg"):
+        elif file['filename'].endswith(".hgf"):
             # check format of hg file
-            if hg_file_is_ok(file['raw_url']):
+            if hgf_file_is_ok(file['raw_url']):
                 value = value + "- [x] " + file['filename'] + "\n"
             else:
                 value = value + "- [ ] " + file['filename'] + " is not in correct format\n"
@@ -85,7 +115,7 @@ if len(res) > 0:
     if not infoFile:
         value = value + "- [ ] No info file found!\n"
     if not hgFile:
-        value = value + "- [ ] No hg file found!\n"
+        value = value + "- [ ] No hgf file found!\n"
     if not mdFile or not infoFile or not hgFile:
         iserror = True        
 else:

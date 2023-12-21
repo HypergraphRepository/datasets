@@ -10,7 +10,7 @@ To add your dataset to this repository, you can follow the steps below:
 ```
 dataset_name
 ├── README.md
-├── dataset_name.hg
+├── dataset_name.hgf
 └── categories.info
 ```
 - Open a pull request to this repository
@@ -25,11 +25,16 @@ The README.md file should contain a description of the dataset and the source of
 
 The hypergraph file should be in the following format:
 ```
-0,1
-2,3
-4,5,6
+16 4
+1=true 2=true 3=true
+4=true 5=true 6=true 7=true 8=true 9=true 10=true 
+11=true 12=true 13=true 14=true 15=true 
+9=true 10=true 11=true 13=true 16=true
 ```
-Where each line represents a hyperedge and each number represents a node.
+The first line contains the number of nodes and the number of hyperedges.
+The following lines represent a hyperedge and each number represents a node.
+
+
 
 The format of the categories.info file should be:
 ```
@@ -45,3 +50,7 @@ If you want to be a reviewer, please open an issue in this repository following 
 # Stats
 
 ![Alt](https://repobeats.axiom.co/api/embed/6ab4b67f9c1ef80bc02370d364ef65db4ec40284.svg "Repobeats analytics image")
+
+# Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=HypergraphRepository/datasets&type=Date)](https://star-history.com/#HypergraphRepository/datasets&Date)
