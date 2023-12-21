@@ -33,7 +33,7 @@ def hgf_file_is_ok(rawApiCall):
     # check that file format is correct like:
     # 16 4
     # 1=true 2=true 3=true
-
+    # 4=true 5=true 6=true
     firstLine = rawRes.splitlines()[0]
     splitFirstLine = firstLine.split(" ")
     if len(splitFirstLine) != 2:
@@ -45,7 +45,7 @@ def hgf_file_is_ok(rawApiCall):
         if line == "":
             continue
         for element in line.split(" "):
-            if element == "":
+            if element == "" or element == "\n":
                 continue
             splitElement = element.split("=")
             if len(splitElement) != 2:
