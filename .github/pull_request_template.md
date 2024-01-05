@@ -1,20 +1,13 @@
-## Info
-Pull Request Template
+**Info**
 
-This is a template to add a new dataset to the repository. Please fill out the following sections to help the reviewers.
-You can delete this section before submitting the pull request.
+**Pull Request Template**
+This serves as a template for adding a new dataset to the repository. Please complete the following sections to assist the reviewers. You may remove this section before submitting the pull request.
 
-## Description
+**Description**
+Describe your dataset here. You can explain its origin, content, and purpose. Please, add a link to the original source of the dataset if possible. You can also add a bibtex snippet to properly cite the dataset.
 
-Describe your dataset here. You can explain where it comes from, what it contains, and what it is used for.
-You can also add a link to the original source of the dataset or to a paper that uses it.
-
-## Checklist before requesting a review
-
-- [ ] I have added a folder with the name of the dataset
-- [ ] I have added the README.md file
-  - You can look at [Template](https://github.com/HypergraphRepository/datasets/blob/main/template/README.md) for an example
-- [ ] I have added tags of the dataset in the categories.info file
-  - The .info file supported for now is in the format of [Template](https://github.com/HypergraphRepository/datasets/blob/main/template/categories.info)
-- [ ] I have added the dataset as a namedataset.hgf file
-  - The .hgf file supported for now is in the format of [Template](https://github.com/HypergraphRepository/datasets/blob/main/template/template.hgf)
+**Checklist before requesting a review**
+[ ] I have included a folder named after the dataset.
+[ ] I have incorporated the `README.md` file. Please, refer to the [Template](https://github.com/HypergraphRepository/datasets/blob/main/template/README.md) for an example.
+[ ] I have included the dataset's tags to the `categories.info` file. An example file is provided [here](https://github.com/HypergraphRepository/datasets/blob/main/template/categories.info).
+[ ] I have included the dataset as a `dataset_name.hgf` file. An example file is provided [here](https://github.com/HypergraphRepository/datasets/blob/main/template/template.hgf).
