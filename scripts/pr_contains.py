@@ -57,6 +57,31 @@ def hgf_file_is_ok(rawApiCall):
         
     return True
 
+def categories_is_ok(rawApiCall):
+    rawResponse = requests.get(rawApiCall)
+    rawRes = rawResponse.text
+    # check that file format is correct like:
+    # domain
+    # ---
+    # category1
+    # category2
+    # category3
+    txt = rawRes.splitlines()
+    category = txt[0]
+    types = []
+    if category == "":
+        return False
+    if rawRes.splitlines()[1] != "---":
+        return False
+    else:
+        for line in rawRes.splitlines()[2:]:
+            if line == "":
+                continue
+            types.append(line)
+        if len(types) == 0:
+            return False
+    return True
+
 name = 'template'
 value = f'### INFO on your PR\n'
 
@@ -100,7 +125,11 @@ if len(res) > 0:
         if file['filename'].endswith(".md"):
             value = value + "- [x] " + file['filename'] + "\n"
         elif file['filename'].endswith(".info"):
-            value = value + "- [x] " + file['filename'] + "\n"
+            # check format of hg file
+            if categories_is_ok(file['raw_url']):
+                value = value + "- [x] " + file['filename'] + "\n"
+            else:
+                value = value + "- [ ] " + file['filename'] + " is not in correct format\n"
         elif file['filename'].endswith(".hgf"):
             # check format of hg file
             if hgf_file_is_ok(file['raw_url']):
