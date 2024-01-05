@@ -34,14 +34,44 @@ The hypergraph file should be in the following format:
 The first line contains the number of nodes and the number of hyperedges.
 The following lines represent a hyperedge and each number represents a node.
 
-
-
 The format of the categories.info file should be:
 ```
+domain
+---
 category1
 category2
 category3
 ```
+
+Do you need an example? Check out this list:
+- Categories:
+  - Biological Networks
+  - Collaboration Networks
+  - Citation Networks
+  - Dynamic Networks
+  - Ecology Networks
+  - Economic Networks
+  - Email Networks
+  - Heterogeneous Networks
+  - Labeled Networks
+  - Massive Network Data
+  - Miscellaneous Networks
+  - Online communities 
+  - Online reviews 
+  - Power Networks
+  - Proximity Networks
+  - Recommendation Networks
+  - Retweet Networks
+  - Signed networks 
+  - Social Networks
+  - Telecom networks 
+  - Temporal networks 
+- Types:
+  - Directed
+  - Undirected
+  - Weighted
+  - Unweighted
+  - Temporal
 
 # Want to be a reviewer?
 
