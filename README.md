@@ -1,6 +1,7 @@
 # Info
 
-WIP
+![preview](https://ibb.co/Sfqh83j)
+
 You can find the live website at [Site](https://hypergraphrepository.di.unisa.it/)
 
 # Add your dataset here
