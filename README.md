@@ -1,6 +1,6 @@
 # Info
 
-![preview](https://ibb.co/Sfqh83j)
+![preview](https://i.ibb.co/qJbtfrS/Screenshot-2024-01-08-alle-11-54-22.png)
 
 You can find the live website at [Site](https://hypergraphrepository.di.unisa.it/)
 
