@@ -53,8 +53,6 @@ Do you need an example? Check out this list:
   - Ecology Networks
   - Economic Networks
   - Email Networks
-  - Heterogeneous Networks
-  - Labeled Networks
   - Massive Network Data
   - Miscellaneous Networks
   - Online communities 
@@ -62,18 +60,26 @@ Do you need an example? Check out this list:
   - Power Networks
   - Proximity Networks
   - Recommendation Networks
-  - Retweet Networks
-  - Signed networks 
   - Social Networks
   - Telecom networks 
-  - Temporal networks 
 - Types:
-  - Directed
-  - Undirected
-  - Weighted
-  - Unweighted
-  - Temporal
-
+  - Nature of the relation
+    - Homogeneous
+    - Heterogeneous
+    - Weighted
+  - Directionality of the relation
+    - Directed
+    - Undirected 
+  - Size of the relation
+    - K-uniform
+    - Non-uniform
+  - Temporal dimension
+    - Static
+    - Temporal
+  - Node/Hyperedge attributes
+    - Attributed
+    - Signed
+  
 # Want to be a reviewer?
 
 If you want to be a reviewer, please open an issue in this repository following the template 
