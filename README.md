@@ -12,13 +12,20 @@ To add your dataset to this repository, you can follow the steps below:
 dataset_name
 ├── README.md
 ├── dataset_name.hgf
-└── categories.info
+├── categories.info
+└── otherfiles.any
 ```
 - Open a pull request to this repository
 - Actions will run to check the files
 - If the files are valid, at least 1 reviewer will be assigned to the pull request
 - If the reviewer approves the pull request, the dataset will be merged into the repository
 
+We have 3 mandatory files:
+- README.md
+- dataset_name.hgf
+- categories.info
+However, you can add other files if you want, specifying them in the README.md file for what they are used.
+For example, you can add a file containing labels for the nodes or hyperedges.
 
 # File formats
 
