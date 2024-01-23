@@ -1,3 +1,5 @@
+![Uptime Robot status](https://img.shields.io/uptimerobot/status/m795798027-01f7c737628356e8136c7bed)
+
 # Info
 
 ![preview](https://i.ibb.co/qJbtfrS/Screenshot-2024-01-08-alle-11-54-22.png)
