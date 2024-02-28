@@ -1,8 +1,6 @@
 ## Summary
 
-Hypergraph where nodes are GoT characters, and hyperedges
-are GoT scenes. In other words, a hyperedge consists of all characters appearing in
-the same scene together
+This dataset contains data about the Game of Thrones (GoT) TV show. Each node represents a GoT character, while each hyperedge is a scene, thus linking all characters appearing together within a particular scene.
 
 ## Source
 
