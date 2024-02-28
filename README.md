@@ -33,7 +33,7 @@ For example, you can add a file containing labels for the nodes or hyperedges.
 
 The README.md file should contain a description of the dataset and the source of the data in standard markdown format.
 
-The hypergraph file should be in the following format:
+The hypergraph file should be in the following format (**hgf** format):
 ```
 16 4
 1=true 2=true 3=true
