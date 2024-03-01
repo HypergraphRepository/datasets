@@ -1,8 +1,10 @@
-## Summary
+## **Summary**
+This dataset contains data about the Game of Thrones (GoT) TV show. 
+Each node represents a GoT character, while each hyperedge is a GoT scene, linking all characters appearing in the same scene together.
 
-This dataset contains data about the Game of Thrones (GoT) TV show. Each node represents a GoT character, while each hyperedge is a scene, thus linking all characters appearing together within a particular scene.
 
-## Source
+## **Source**
+The original data source can be found at the following GitHub repository: [https://github.com/jeffreylancaster/game-of-thrones](https://github.com/jeffreylancaster/game-of-thrones).
 
-The data was used in *Social Influence Maximization in Hypergraphs* paper, available at [**Link**](https://www.mdpi.com/1099-4300/23/7/796).
-The original data source can be found at GitHub Repository, available [**Link**](https://github.com/jeffreylancaster/game-of-thrones).
+This dataset has been used in the following papers:
+- *Social Influence Maximization in Hypergraphs* [link](https://www.mdpi.com/1099-4300/23/7/796).
