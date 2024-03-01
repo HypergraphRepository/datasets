@@ -2,7 +2,7 @@
 hgcreation:
 - base-branch: 'main'
 - changed-files:
-  - all-globs-to-all-files: ['**/**/.md', '**/**/.hg', '**/**/.info']
+  - all-globs-to-all-files: ['**/**/.md', '**/**/.hgf', '**/**/.info']
   - all-globs-to-all-files: '!scripts/*'
 
 # Add label info when only readme.md on root folder is changed

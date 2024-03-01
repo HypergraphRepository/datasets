@@ -108,45 +108,57 @@ response = requests.get(apiCall, headers=headers)
 res = response.json()
 
 if len(res) > 0:
-    mdFile = False
-    infoFile = False
-    hgfFile = False
-
-    # check if all files are in the pull request
+    # check if files are just modified
+    all_added = True
     for file in res:
-        if file['filename'].endswith(".md"):
-            mdFile = True
-        if file['filename'].endswith(".info"):
-            infoFile = True
-        if file['filename'].endswith(".hgf"):
-            hgFile = True
+        if file['status'] != "added":
+            all_added = False
+            break
 
-    for file in res:
-        if file['filename'].endswith(".md"):
-            value = value + "- [x] " + file['filename'] + "\n"
-        elif file['filename'].endswith(".info"):
-            # check format of hg file
-            if categories_is_ok(file['raw_url']):
-                value = value + "- [x] " + file['filename'] + "\n"
-            else:
-                value = value + "- [ ] " + file['filename'] + " is not in correct format\n"
-        elif file['filename'].endswith(".hgf"):
-            # check format of hg file
-            if hgf_file_is_ok(file['raw_url']):
-                value = value + "- [x] " + file['filename'] + "\n"
-            else:
-                value = value + "- [ ] " + file['filename'] + " is not in correct format\n"
-        else:
-            value = value + "- [x] additional file not request!\n"
+    if not all_added:
+        value = value + "Not all files are new!\nAdding a reviewer to check the changes\n"
+    else:
+        # Only new files are in the pull request
+        # check if the mandatory files are in the pull request
+        mdFile = False
+        infoFile = False
+        hgFile = False
 
-    if not mdFile:
-        value = value + "- [ ] No markdown file found!\n"
-    if not infoFile:
-        value = value + "- [ ] No info file found!\n"
-    if not hgFile:
-        value = value + "- [ ] No hgf file found!\n"
-    if not mdFile or not infoFile or not hgFile:
-        iserror = True        
+        for file in res:
+            if file['filename'].endswith(".md"):
+                mdFile = True
+            if file['filename'].endswith(".info"):
+                infoFile = True
+            if file['filename'].endswith(".hgf"):
+                hgFile = True
+
+        # check the format of the files
+        for file in res:
+            if file['filename'].endswith(".md"):
+                value = value + "- [x] " + file['filename'] + "\n"
+            elif file['filename'].endswith(".info"):
+                # check format of categories file
+                if categories_is_ok(file['raw_url']):
+                    value = value + "- [x] " + file['filename'] + "\n"
+                else:
+                    value = value + "- [ ] " + file['filename'] + " is not in correct format\n"
+            elif file['filename'].endswith(".hgf"):
+                # check format of hypergraph file
+                if hgf_file_is_ok(file['raw_url']):
+                    value = value + "- [x] " + file['filename'] + "\n"
+                else:
+                    value = value + "- [ ] " + file['filename'] + " is not in correct format\n"
+            else:
+                value = value + "- [x] additional file not request!\n"
+
+        if not mdFile:
+            value = value + "- [ ] No markdown file found!\n"
+        if not infoFile:
+            value = value + "- [ ] No info file found!\n"
+        if not hgFile:
+            value = value + "- [ ] No hgf file found!\n"
+        if not mdFile or not infoFile or not hgFile:
+            iserror = True        
 else:
     value = value + "Response is empty!"
     exit(1)
