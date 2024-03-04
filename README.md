@@ -2,7 +2,7 @@
 
 ## General Info
 
-![preview](https://i.ibb.co/hCkPWkr/Screenshot-2024-03-01-alle-16-16-46.png)
+![preview](https://i.ibb.co/RpPjGkL/hpage.png)
 You can find the live website at [Site](https://hypergraphrepository.di.unisa.it/)
 
 ## Cite us
