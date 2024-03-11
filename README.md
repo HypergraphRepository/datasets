@@ -30,7 +30,7 @@ dataset_name
 ├── README.md
 ├── dataset_name.hgf
 ├── categories.info
-└── otherfiles.any
+└── <optional_files.any>
 ```
 - Open a pull request to this repository
 - Actions will run to check the files
@@ -64,6 +64,14 @@ generic format:
 .
 <id1000>=<weight1000> <id1001>=<weight1001> ... <id1234>=<weight1234>
 ```
+example with weights as boolean (this is the default handling of the library when no weights are provided):
+```
+16 4
+1=true 2=true 3=true
+4=true 5=true 6=true 7=true 8=true 9=true 10=true 
+11=true 12=true 13=true 14=true 15=true 
+9=true 10=true 11=true 13=true 16=true
+```
 
 example with weights as float numbers:
 ```
@@ -74,25 +82,16 @@ example with weights as float numbers:
 9=0.8 10=0.8 11=0.8 13=0.8 16=0.8
 ```
 
-example without weights as boolean:
-```
-16 4
-1=true 2=true 3=true
-4=true 5=true 6=true 7=true 8=true 9=true 10=true 
-11=true 12=true 13=true 14=true 15=true 
-9=true 10=true 11=true 13=true 16=true
-```
-
 ### Describe your network
 
 The format of the categories.info file should be:
 
 ```
-domain
+Category
 ---
-category1
-category2
-category3
+type1
+type2
+type3
 ```
 
 Do you need an example? Check out this list:
@@ -133,9 +132,8 @@ Do you need an example? Check out this list:
 
 ## Adding metadata
 
-Using 
-See [NDC-classes](https://github.com/HypergraphRepository/datasets/tree/main/NDC-classes) as a pratical example.
-  
+Using additional files, you can add metadata to the nodes and hyperedges of the hypergraph. See [NDC-classes](https://github.com/HypergraphRepository/datasets/tree/main/NDC-classes) as a pratical example.
+
 # Want to be a reviewer?
 
 Do you want to be a reviewer for this repository?
@@ -145,7 +143,4 @@ If you would like to help us mantain this repository and enhance the quality of 
 # Stats
 
 ![Alt](https://repobeats.axiom.co/api/embed/6ab4b67f9c1ef80bc02370d364ef65db4ec40284.svg "Repobeats analytics image")
-
-# Star History
-
 [![Star History Chart](https://api.star-history.com/svg?repos=HypergraphRepository/datasets&type=Date)](https://star-history.com/#HypergraphRepository/datasets&Date)

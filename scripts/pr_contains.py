@@ -100,11 +100,13 @@ try:
 except KeyError:
     GITHUB_TOKEN = "GitHub Token not available!"
 
-apiCall = "https://api.github.com/repos/HypergraphRepository/datasets/pulls/" + str(PR_NUMBER) + "/files"
+baseline = "https://api.github.com/repos/HypergraphRepository/datasets"
+pr_files_get = baseline + "/pulls/" + str(PR_NUMBER) + "/files"
+pr_add_label_post = baseline + "/issues/" + str(PR_NUMBER) + "/labels"
 
 headers = {'Authorization': 'token ' + GITHUB_TOKEN}
 
-response = requests.get(apiCall, headers=headers)
+response = requests.get(pr_files_get, headers=headers)
 res = response.json()
 
 if len(res) > 0:
@@ -117,9 +119,11 @@ if len(res) > 0:
 
     if not all_added:
         value = value + "Not all files are new!\nAdding a reviewer to check the changes\n"
+        requests.post(pr_add_label_post, headers=headers, data='{"labels":["enhancement"]}')
     else:
         # Only new files are in the pull request
         # check if the mandatory files are in the pull request
+        requests.post(pr_add_label_post, headers=headers, data='{"labels":["hgcreation"]}')
         mdFile = False
         infoFile = False
         hgFile = False
@@ -158,6 +162,7 @@ if len(res) > 0:
         if not hgFile:
             value = value + "- [ ] No hgf file found!\n"
         if not mdFile or not infoFile or not hgFile:
+            requests.post(pr_add_label_post, headers=headers, data='{"labels":["missing file"]}')
             iserror = True        
 else:
     value = value + "Response is empty!"
