@@ -1,6 +1,8 @@
 import os 
 import requests
 import uuid
+import fastjsonschema
+import json
 
 def set_multiline_output(name, value):
     with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
@@ -8,6 +10,19 @@ def set_multiline_output(name, value):
         print(f'{name}<<{delimiter}', file=fh)
         print(value, file=fh)
         print(delimiter, file=fh)
+
+def hif_file_is_ok(rawApiCall):
+    url = "https://raw.githubusercontent.com/pszufe/HIF-standard/main/schemas/hif_schema.json"
+    schema = requests.get(url).json()
+    validator = fastjsonschema.compile(schema)
+    hiftext = json.load(open("algebra.hif",'r'))
+    try:
+        validator(hiftext)
+        print("HIF-Compliant JSON.")
+        return True
+    except Exception as e:
+        print(f"Invalid JSON: {e}")
+        return False
 
 def hg_file_is_ok(rawApiCall):
     rawResponse = requests.get(rawApiCall)
@@ -127,6 +142,7 @@ if len(res) > 0:
         mdFile = False
         infoFile = False
         hgFile = False
+        hifFile = False
 
         for file in res:
             if file['filename'].endswith(".md"):
@@ -135,6 +151,8 @@ if len(res) > 0:
                 infoFile = True
             if file['filename'].endswith(".hgf"):
                 hgFile = True
+            if file['filename'].endswith(".hif"):
+                hifFile = True
 
         # check the format of the files
         for file in res:
@@ -152,6 +170,12 @@ if len(res) > 0:
                     value = value + "- [x] " + file['filename'] + "\n"
                 else:
                     value = value + "- [ ] " + file['filename'] + " is not in correct format\n"
+            elif file['filename'].endswith(".hif"):
+                # check format of HIF format https://github.com/pszufe/HIF-standard
+                if hif_file_is_ok(file['raw_url']):
+                    value = value + "- [x] " + file['filename'] + "\n"
+                else:
+                    value = value + "- [ ] " + file['filename'] + " is not in correct format\n"
             else:
                 value = value + "- [x] additional file not request!\n"
 
@@ -161,6 +185,8 @@ if len(res) > 0:
             value = value + "- [ ] No info file found!\n"
         if not hgFile:
             value = value + "- [ ] No hgf file found!\n"
+        if not hifFile:
+            value = value + "- [ ] No hif file found!\n"
         if not mdFile or not infoFile or not hgFile:
             requests.post(pr_add_label_post, headers=headers, data='{"labels":["missing file"]}')
             iserror = True        
