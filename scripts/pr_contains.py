@@ -16,8 +16,8 @@ def hif_file_is_ok(rawApiCall):
     schema = requests.get(url).json()
     validator = fastjsonschema.compile(schema)
     rawResponse = requests.get(rawApiCall)
-    rawRes = rawResponse.text
-    hiftext = json.load(rawRes)
+    # rawRes = rawResponse.text
+    hiftext = json.load(rawResponse)
     try:
         validator(hiftext)
         print("HIF-Compliant JSON.")
