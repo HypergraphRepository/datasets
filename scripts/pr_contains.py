@@ -15,7 +15,9 @@ def hif_file_is_ok(rawApiCall):
     url = "https://raw.githubusercontent.com/pszufe/HIF-standard/main/schemas/hif_schema.json"
     schema = requests.get(url).json()
     validator = fastjsonschema.compile(schema)
-    hiftext = json.load(open("algebra.hif",'r'))
+    rawResponse = requests.get(rawApiCall)
+    rawRes = rawResponse.text
+    hiftext = json.load(rawRes)
     try:
         validator(hiftext)
         print("HIF-Compliant JSON.")
