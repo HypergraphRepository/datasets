@@ -152,7 +152,7 @@ if len(res) > 0:
                 infoFile = True
             if file['filename'].endswith(".hgf"):
                 hgFile = True
-            if file['filename'].endswith(".hif"):
+            if file['filename'].endswith(".json"):
                 hifFile = True
 
         # check the format of the files
@@ -171,7 +171,7 @@ if len(res) > 0:
                     value = value + "- [x] " + file['filename'] + "\n"
                 else:
                     value = value + "- [ ] " + file['filename'] + " is not in correct format\n"
-            elif file['filename'].endswith(".hif"):
+            elif file['filename'].endswith(".json"):
                 # check format of HIF format https://github.com/pszufe/HIF-standard
                 if hif_file_is_ok(file['raw_url']):
                     value = value + "- [x] " + file['filename'] + "\n"
